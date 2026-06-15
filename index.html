@@ -7,113 +7,149 @@
 
 <style>
 :root {
-    --bg: #f9f9f9;
-    --card: #ffffff;
-    --text: #1f2937;
-    --muted: #6b7280;
-    --accent: #2563eb;
+  --bg: #f4f6fb;
+  --card: rgba(255,255,255,0.85);
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #4f46e5;
 }
 
+.dark {
+  --bg: #0b1020;
+  --card: rgba(20,24,45,0.85);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #818cf8;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(120deg, var(--bg), #eef2ff);
+  color: var(--text);
+  transition: all .3s ease;
 }
 
 .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 50px 20px;
+  max-width: 950px;
+  margin: auto;
+  padding: 60px 20px;
 }
 
-/* ---------- HEADER ---------- */
+/* HEADER */
 header {
-    text-align: center;
-    margin-bottom: 60px;
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+  font-size: 2.8rem;
+  margin-bottom: 10px;
 }
 
 header p {
-    color: var(--muted);
-    font-size: 1.05rem;
+  color: var(--muted);
 }
 
-/* ---------- SECTIONS ---------- */
+/* BUTTONS */
+.actions {
+  margin-top: 25px;
+}
+
+.actions a, .toggle {
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.actions a.secondary {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.actions a:hover, .toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* SECTIONS */
 section {
-    margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
-/* ---------- SKILLS ---------- */
+.card {
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+}
+
+/* SKILLS */
 .skills span {
-    display: inline-block;
-    background: #eef2ff;
-    color: #1e3a8a;
-    padding: 8px 14px;
-    margin: 6px;
-    border-radius: 999px;
-    font-size: 14px;
-    opacity: 0;
-    transform: scale(0.9);
-    animation: popIn 0.5s ease forwards;
+  display: inline-block;
+  margin: 6px;
+  padding: 8px 14px;
+  background: rgba(79,70,229,.1);
+  color: var(--accent);
+  border-radius: 999px;
+  font-size: 14px;
 }
 
-.skills span:nth-child(1){animation-delay:.05s}
-.skills span:nth-child(2){animation-delay:.1s}
-.skills span:nth-child(3){animation-delay:.15s}
-.skills span:nth-child(4){animation-delay:.2s}
-.skills span:nth-child(5){animation-delay:.25s}
-
-/* ---------- JOB CARDS ---------- */
-.job {
-    background: var(--card);
-    padding: 25px;
-    border-radius: 14px;
-    margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: transform .3s ease, box-shadow .3s ease;
+/* METRICS */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  text-align: center;
 }
 
-.job:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+.metric h3 {
+  font-size: 2rem;
+  margin: 0;
+  color: var(--accent);
 }
 
-.job h3 {
-    margin-top: 0;
+.metric p {
+  color: var(--muted);
+  margin-top: 5px;
 }
 
-/* ---------- FADE-IN SCROLL ---------- */
+/* FADE-IN */
 .fade {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .8s ease;
 }
 
 .fade.show {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ---------- FOOTER ---------- */
 footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 14px;
-    margin-top: 80px;
-}
-
-/* ---------- ANIMATIONS ---------- */
-@keyframes popIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 100px;
 }
 </style>
 </head>
@@ -122,103 +158,135 @@ footer {
 <div class="container">
 
 <header class="fade">
-    <h1>Marhama Ghari</h1>
-    <p>System Administrator • IT Support • Microsoft 365 & Endpoint Management</p>
-    <p>Orlando, FL • marhamaghari22@icloud.com</p>
+  <h1>Marhama Ghari</h1>
+  <p>System Administrator • IT Support • Microsoft 365 & Endpoint Management</p>
+  <p>Orlando, FL</p>
+
+  <div class="actions">
+    <a href="Marhama-Ghari-Resume.pdf" download>Download Resume</a>
+    <a href="https://www.linkedin.com" class="secondary" target="_blank">LinkedIn</a>
+    <button class="toggle" onclick="toggleDark()">Dark Mode</button>
+  </div>
 </header>
 
 <section class="fade">
+  <div class="card">
     <h2>About Me</h2>
     <p>
-        System Administrator with hands-on experience supporting Windows and macOS environments,
-        managing Microsoft 365, Azure Active Directory (Entra ID), and MDM platforms.
-        Strong background in endpoint management, identity access, SLA-driven support,
-        and IT documentation.
+      System Administrator with hands-on experience supporting Windows and macOS environments,
+      managing Microsoft 365, Azure Active Directory (Entra ID), and MDM platforms.
+      Strong background in endpoint management, identity access, SLA-driven IT support,
+      and IT documentation.
     </p>
+  </div>
 </section>
 
 <section class="fade">
+  <h2>Impact</h2>
+  <div class="metrics">
+    <div class="metric">
+      <h3 data-count="40">0</h3>
+      <p>Tickets Resolved / Week</p>
+    </div>
+    <div class="metric">
+      <h3 data-count="500">0</h3>
+      <p>Users Supported</p>
+    </div>
+    <div class="metric">
+      <h3 data-count="1000">0</h3>
+      <p>Devices Managed</p>
+    </div>
+  </div>
+</section>
+
+<section class="fade">
+  <div class="card">
     <h2>Core Skills</h2>
     <div class="skills">
-        <span>Windows 10/11</span>
-        <span>macOS</span>
-        <span>Microsoft 365</span>
-        <span>Azure AD / Entra ID</span>
-        <span>Intune</span>
-        <span>Jamf Pro</span>
-        <span>MDM (iOS & Android)</span>
-        <span>ServiceNow</span>
-        <span>PowerShell</span>
+      <span>Microsoft 365</span>
+      <span>Azure AD / Entra ID</span>
+      <span>Intune</span>
+      <span>Jamf Pro</span>
+      <span>Windows & macOS</span>
+      <span>MDM</span>
+      <span>ServiceNow</span>
+      <span>PowerShell</span>
     </div>
+  </div>
 </section>
 
 <section class="fade">
-    <h2>Experience</h2>
+  <h2>Experience</h2>
 
-    <div class="job">
-        <h3>Desktop Support Specialist (Contract)</h3>
-        <strong>Broad Institute of MIT and Harvard</strong> — Mar 2025 – May 2025
-        <ul>
-            <li>Resolved incidents using ServiceNow while meeting SLAs</li>
-            <li>Supported Microsoft 365 provisioning, licensing, MFA</li>
-            <li>Administered Azure AD & Active Directory</li>
-            <li>Managed macOS and iOS devices via Jamf Pro</li>
-        </ul>
-    </div>
-
-    <div class="job">
-        <h3>System Analyst (Contract)</h3>
-        <strong>Alexander Technology Group</strong> — Jul 2023 – Dec 2023
-        <ul>
-            <li>Administered Microsoft 365 and Azure AD security configurations</li>
-            <li>Managed Windows & macOS endpoints using Intune and Jamf Pro</li>
-            <li>Performed patching, monitoring, and compliance checks</li>
-        </ul>
-    </div>
-
-    <div class="job">
-        <h3>IT / AV Specialist</h3>
-        <strong>BCG</strong> — Apr 2024 – Jun 2024
-        <ul>
-            <li>Supported enterprise meetings and live events</li>
-            <li>Troubleshot hardware and software issues</li>
-        </ul>
-    </div>
-</section>
-
-<section class="fade">
-    <h2>Portfolio Projects</h2>
+  <div class="card">
+    <h3>Desktop Support Specialist (Contract)</h3>
+    <strong>Broad Institute of MIT and Harvard</strong>
     <ul>
-        <li><strong>Microsoft 365 User Lifecycle Management</strong> — onboarding & offboarding automation</li>
-        <li><strong>Endpoint Compliance Optimization</strong> — Intune & Jamf Pro standardization</li>
-        <li><strong>IT Documentation & SOPs</strong> — onboarding & troubleshooting guides</li>
+      <li>Resolved incidents using ServiceNow while meeting SLAs</li>
+      <li>Administered Microsoft 365 & Azure AD</li>
+      <li>Managed macOS and iOS devices via Jamf Pro</li>
     </ul>
+  </div>
+
+  <div class="card">
+    <h3>System Analyst (Contract)</h3>
+    <strong>Alexander Technology Group</strong>
+    <ul>
+      <li>Managed Intune & Jamf endpoints</li>
+      <li>Performed patching, monitoring, and compliance checks</li>
+    </ul>
+  </div>
 </section>
 
 <section class="fade">
+  <div class="card">
     <h2>Education</h2>
     <p>
-        <strong>B.S. Information Technology (Cybersecurity)</strong><br>
-        Southern New Hampshire University — 2025
+      <strong>B.S. Information Technology (Cybersecurity)</strong><br>
+      Southern New Hampshire University — 2025
     </p>
+  </div>
 </section>
 
 <footer class="fade">
-    © 2026 Marhama Ghari
+  © 2026 Marhama Ghari
 </footer>
 
 </div>
 
 <script>
+/* Scroll reveal */
 const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("show");
+  });
 }, { threshold: 0.15 });
 
 document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+/* Dark mode */
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+
+/* Counters */
+const counters = document.querySelectorAll("[data-count]");
+counters.forEach(counter => {
+  let target = +counter.getAttribute("data-count");
+  let count = 0;
+  let step = target / 80;
+
+  function update() {
+    count += step;
+    if (count < target) {
+      counter.textContent = Math.floor(count);
+      requestAnimationFrame(update);
+    } else {
+      counter.textContent = target;
+    }
+  }
+  update();
+});
 </script>
 
 </body>
