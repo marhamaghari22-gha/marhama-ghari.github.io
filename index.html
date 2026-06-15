@@ -6,141 +6,138 @@
 <title>Marhama Ghari | IT Portfolio</title>
 
 <style>
+:root {
+    --bg: #f9f9f9;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --accent: #2563eb;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: #f9f9f9;
-    color: #222;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.6;
 }
 
 .container {
     max-width: 900px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 50px 20px;
 }
 
-h1, h2, h3 {
-    color: #111;
-}
-
+/* ---------- HEADER ---------- */
 header {
     text-align: center;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 60px;
 }
 
 header h1 {
-    margin-bottom: 5px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 header p {
-    color: #555;
+    color: var(--muted);
+    font-size: 1.05rem;
 }
 
+/* ---------- SECTIONS ---------- */
 section {
-    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
+/* ---------- SKILLS ---------- */
 .skills span {
     display: inline-block;
-    background: #eaeaea;
-    padding: 8px 12px;
+    background: #eef2ff;
+    color: #1e3a8a;
+    padding: 8px 14px;
     margin: 6px;
-    border-radius: 6px;
+    border-radius: 999px;
     font-size: 14px;
-}
-
-.job {
-    margin-bottom: 25px;
-}
-
-footer {
-    margin-top: 60px;
-    text-align: center;
-    color: #666;
-    font-size: 14px;
-}
-</style>
-    /* ---------- ANIMATIONS ---------- */
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.job {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.job:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-.skills span {
     opacity: 0;
     transform: scale(0.9);
     animation: popIn 0.5s ease forwards;
 }
 
-.skills span:nth-child(1) { animation-delay: 0.05s; }
-.skills span:nth-child(2) { animation-delay: 0.1s; }
-.skills span:nth-child(3) { animation-delay: 0.15s; }
-.skills span:nth-child(4) { animation-delay: 0.2s; }
-.skills span:nth-child(5) { animation-delay: 0.25s; }
+.skills span:nth-child(1){animation-delay:.05s}
+.skills span:nth-child(2){animation-delay:.1s}
+.skills span:nth-child(3){animation-delay:.15s}
+.skills span:nth-child(4){animation-delay:.2s}
+.skills span:nth-child(5){animation-delay:.25s}
 
+/* ---------- JOB CARDS ---------- */
+.job {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.job:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.08);
+}
+
+.job h3 {
+    margin-top: 0;
+}
+
+/* ---------- FADE-IN SCROLL ---------- */
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 80px;
+}
+
+/* ---------- ANIMATIONS ---------- */
 @keyframes popIn {
     to {
         opacity: 1;
         transform: scale(1);
     }
 }
+</style>
 </head>
 
 <body>
-    <script>
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('section').forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-});
-</script>
 <div class="container">
 
-<header>
+<header class="fade">
     <h1>Marhama Ghari</h1>
-    <p>System Administrator | IT Support | Microsoft 365 & Endpoint Management</p>
-    <p>Orlando, FL • Marhamaghari22@icloud.com</p>
+    <p>System Administrator • IT Support • Microsoft 365 & Endpoint Management</p>
+    <p>Orlando, FL • marhamaghari22@icloud.com</p>
 </header>
 
-<section>
+<section class="fade">
     <h2>About Me</h2>
     <p>
         System Administrator with hands-on experience supporting Windows and macOS environments,
         managing Microsoft 365, Azure Active Directory (Entra ID), and MDM platforms.
-        Strong background in endpoint management, identity & access administration,
-        SLA-driven IT support, and documentation.
+        Strong background in endpoint management, identity access, SLA-driven support,
+        and IT documentation.
     </p>
 </section>
 
-<section>
+<section class="fade">
     <h2>Core Skills</h2>
     <div class="skills">
         <span>Windows 10/11</span>
@@ -152,27 +149,26 @@ document.querySelectorAll('section').forEach(section => {
         <span>MDM (iOS & Android)</span>
         <span>ServiceNow</span>
         <span>PowerShell</span>
-        <span>Endpoint Management</span>
     </div>
 </section>
 
-<section>
+<section class="fade">
     <h2>Experience</h2>
 
     <div class="job">
         <h3>Desktop Support Specialist (Contract)</h3>
-        <strong>Broad Institute of MIT and Harvard</strong> | Mar 2025 – May 2025
+        <strong>Broad Institute of MIT and Harvard</strong> — Mar 2025 – May 2025
         <ul>
-            <li>Resolved incidents and service requests using ServiceNow while meeting SLAs</li>
-            <li>Supported Microsoft 365 provisioning, licensing, MFA, and permissions</li>
-            <li>Administered Azure AD and Active Directory</li>
+            <li>Resolved incidents using ServiceNow while meeting SLAs</li>
+            <li>Supported Microsoft 365 provisioning, licensing, MFA</li>
+            <li>Administered Azure AD & Active Directory</li>
             <li>Managed macOS and iOS devices via Jamf Pro</li>
         </ul>
     </div>
 
     <div class="job">
         <h3>System Analyst (Contract)</h3>
-        <strong>Alexander Technology Group</strong> | Jul 2023 – Dec 2023
+        <strong>Alexander Technology Group</strong> — Jul 2023 – Dec 2023
         <ul>
             <li>Administered Microsoft 365 and Azure AD security configurations</li>
             <li>Managed Windows & macOS endpoints using Intune and Jamf Pro</li>
@@ -182,24 +178,24 @@ document.querySelectorAll('section').forEach(section => {
 
     <div class="job">
         <h3>IT / AV Specialist</h3>
-        <strong>BCG</strong> | Apr 2024 – Jun 2024
+        <strong>BCG</strong> — Apr 2024 – Jun 2024
         <ul>
-            <li>Provided enterprise meeting and conferencing support</li>
+            <li>Supported enterprise meetings and live events</li>
             <li>Troubleshot hardware and software issues</li>
         </ul>
     </div>
 </section>
 
-<section>
+<section class="fade">
     <h2>Portfolio Projects</h2>
     <ul>
-        <li><strong>Microsoft 365 User Lifecycle Management:</strong> Automated onboarding and offboarding workflows</li>
-        <li><strong>Endpoint Management Optimization:</strong> Standardized device compliance using Intune and Jamf Pro</li>
-        <li><strong>IT Documentation & SOPs:</strong> Created onboarding and troubleshooting guides</li>
+        <li><strong>Microsoft 365 User Lifecycle Management</strong> — onboarding & offboarding automation</li>
+        <li><strong>Endpoint Compliance Optimization</strong> — Intune & Jamf Pro standardization</li>
+        <li><strong>IT Documentation & SOPs</strong> — onboarding & troubleshooting guides</li>
     </ul>
 </section>
 
-<section>
+<section class="fade">
     <h2>Education</h2>
     <p>
         <strong>B.S. Information Technology (Cybersecurity)</strong><br>
@@ -207,10 +203,23 @@ document.querySelectorAll('section').forEach(section => {
     </p>
 </section>
 
-<footer>
-    <p>© 2026 Marhama Ghari</p>
+<footer class="fade">
+    © 2026 Marhama Ghari
 </footer>
 
 </div>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
